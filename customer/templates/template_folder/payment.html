@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 2</title>
+</head>
+<body>
+    <h2>Django Paystack Integration Part 2</h2>
+    {% load paystack %}
+    <form >
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <button type="button" onclick="makePayment()"> Pay </button> 
+    </form>
+    
+    <script>
+    function makePayment(){
+        var handler = PaystackPop.setup({
+                key:'pk_test_14ba7262cb3ddc92492b6977c10229a948e67b8c', //public key from your paystack
+                email: {{ email }} ,
+                amount: "50",
+                currency: "NGN",
+                ref: ""+Math.floor((Math.random() * 100000000) + 1),
+                ref: ""+Math.floor((Math.random() * 1000000000) + 1),
+                callback: function(response){
+            alert('success. transaction ref is ' +response.reference);
+        },
+        onClose: function(){
+            alert('window closed');
+        }
+        });
+        handler.openIframe();
+    }
+    window.onload = makePayment()
+    </script>
+</body>
+</html>
