@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from customer import views
 from dispatch import receiver
-from paystack.api import signals
+#from paystack.api import signals
 
 @receiver(signals.successful_payment_signal)
 def on_successful_payment(sender, **kwargs):
@@ -28,6 +28,8 @@ def on_successful_payment(sender, **kwargs):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("paystack/", include(("paystack.frameworks.django.urls", "paystack"), namespace="paystack")),
+    path("paystack/", include(("paystack.urls", "paystack"), namespace="paystack")),
     path('', views.customer_info, name='customer_info'),
+    #path("paystack/", include(("paystack.frameworks.django.urls", "paystack"), namespace="paystack")),
+
 ]

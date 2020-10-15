@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'customer',
-    # 'paystack',
-    "paystack.frameworks.django",
+    'paystack',
+    
 ]
 
 MIDDLEWARE = [

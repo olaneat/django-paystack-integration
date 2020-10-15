@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .forms import CustomerInfoForm
-from django.http import HttpResponse
+from django.http import HttpRespnse
 
 # Create your views here.
 def customer_info(request):
